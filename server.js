@@ -17,6 +17,7 @@ app.get('/*', function (req, res) {
     fetchData(requestUrl).then((data) => {
         data = JSON.stringify(data)
         console.log("DATA: " + data)
+        res.header('Access-Control-Allow-Origin','*');
         res.send(data)
     }).catch(e => {
         res.send("ERROR.")
