@@ -4,7 +4,7 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT "MIT License")
  ![GitHub repo size](https://img.shields.io/github/repo-size/das-jishu/add-cors)
  [![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://github.com/das-jishu/add-cors)
- [![Generic badge](https://img.shields.io/badge/lang-node-yellow.svg)](https://www.typescriptlang.org/)
+ [![Generic badge](https://img.shields.io/badge/framework-node-yellow.svg)](https://www.typescriptlang.org/)
  
 **Description:** A Node proxy to add CORS headers to a request made to an API endpoint.
 <br-->
