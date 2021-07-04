@@ -6,12 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "jest --config jestconfig.json --coverage",
-    "push": "git add .",
-    "build": "npm run test",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test",
-    "version": "git add -A src",
-    "postversion": "git push && git push --tags"
+    "build": "npm run test"
   },
   "repository": {
     "type": "git",
