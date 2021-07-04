@@ -6,13 +6,17 @@
  [![Active](http://img.shields.io/badge/Status-Active-green.svg)](https://github.com/das-jishu/add-cors)
  [![Generic badge](https://img.shields.io/badge/lang-node-yellow.svg)](https://www.typescriptlang.org/)
  
-A Node proxy to add CORS headers to a request made to an API endpoint.
+**Description:** A Node proxy to add CORS headers to a request made to an API endpoint.
+<br-->
 
-![Image of error due to blockage by CORS policy](https://github.com/das-jishu/add-cors/blob/master/images/no-cors-error.png?raw=true)
+![Image of error due to blockage by CORS policy](https://github.com/das-jishu/add-cors/blob/master/images/no-cors-error.PNG?raw=true)
+
+<br-->
+The image above shows a response blocked due to CORS policy not satisfied since correct headers were not present on the response. Front end code won't have access to responses if responses don't have CORS headers embedded in it. If the backend server is owned by you, you can add the headers to solve the problem. If it isn't owned by you, a proxy server comes into play.
 
 ### HOW TO USE
 
-BASE URL: https://attach-cors.herokuapp.com/
+**BASE URL:** https://attach-cors.herokuapp.com/
 
 Append the base URL infront of the API endpoint and perform the request as usual. The request will be passed through the proxy to get the response. CORS headers will be added to the response and sent back.
 
@@ -21,9 +25,9 @@ Append the base URL infront of the API endpoint and perform the request as usual
    fetch("https://attach-cors.herokuapp.com/some-API-with-no-cors")  // SUCCESS
 ```
 
-Note that it is a public proxy with rate limmiting applied, so responses might be delayed. A better approach would be to create your own proxy server to handle the requests. This can be done with the following commands:
+Note that it is a public proxy with rate limiting applied, so responses might be delayed. A better approach would be to create your own proxy server to handle the requests. This can be done with the following commands:
 
-```JS
+```bash
    git clone https://github.com/das-jishu/add-cors.git
    cd add-cors/
    npm install
