@@ -1,57 +1,53 @@
 const express = require('express')
-const app = express()
 const dotenv = require('dotenv');
-const fetch = require("node-fetch");
+const rateLimit = require("express-rate-limit");
+const utils = require("./utils.js");
 
-// respond with "hello world" when a GET request is made to the homepage
+const app = express()
+
+const limiter = rateLimit({
+    windowMs: 30 * 60 * 1000, // 30 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.use(limiter);
+
 app.get('/', function (req, res) {
-    res.send('Welcome to add-cors!')
+    return res.status(200).json({
+        status: "pass",
+        message: "Welcome to add-cors! Attach this base URL in front of the API endpoint to set CORS headers to the response.",
+    });
 })
 
 app.get('/*', function (req, res) {
-    const requestUrl = req.params[0]
-    isValidURL = validateURL(requestUrl)
+    let requestUrl = req.params[0]
+    isValidURL = utils.validateURL(requestUrl)
     if (isValidURL == false) 
-        return res.send("Invalid URL. Can't fetch.")
+        return res.status(400).json({
+            status: "fail",
+            message: "Invalid URL. Please enter a valid API endpoint.",
+        });
+    
+    if (requestUrl.startsWith("http") == false)
+        requestUrl = "http://" + requestUrl;
 
-    fetchData(requestUrl).then((data) => {
+    utils.fetchData(requestUrl).then((data) => {
         data = JSON.stringify(data)
-        console.log("DATA: " + data)
+        //console.log("DATA: " + data)
         res.header('Access-Control-Allow-Origin','*');
+        res.statusCode = 200;
         res.send(data)
     }).catch(e => {
-        res.send("ERROR.")
+        res.status(400).json({
+            status: "fail",
+            message: "Failed to fetch data from API. Please verify endpoint or try later.",
+            error: e
+        });
     });
-    //console.log(requestUrl)
-    //console.log(data)
-    //res.send("URL: " + requestUrl + "\nData: " + data)
 })
-
-async function fetchData(url) {
-    //console.log(8)
-    const data = await fetch(url).catch(e => {
-        console.log("ERROR WHILE FETCHING API.")
-    });
-    
-    //console.log("DATA: " + data)
-    let response = await data.json();
-    console.log("RESPONSE:" + response)
-    return response
-    //return data
-    //return 30
-}
-
-function validateURL(str) 
-{ 
-    regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/; 
-    if (regexp.test(str))  
-        return true; 
-    else 
-        return false; 
-} 
 
 dotenv.config({ path: './config.env' });
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
-    console.log(`App running on port ${port}...`);
+    console.log(`Proxy server running on port ${port}...`);
 });
