@@ -12,7 +12,7 @@
 ![Image of error due to blockage by CORS policy](https://github.com/das-jishu/add-cors/blob/master/images/no-cors-error.PNG?raw=true)
 
 <br-->
-The image above shows a response blocked due to CORS policy not satisfied since correct headers were not present on the response. Front end code won't have access to responses if responses don't have CORS headers embedded in it. If the backend server is owned by you, you can add the headers to solve the problem. If it isn't owned by you, a proxy server comes into play.
+The image above shows a response blocked due to CORS policy not satisfied since correct headers were not present on the response. Frontend code won't have access to responses if responses don't have CORS headers embedded in it. If the backend server is owned by you, you can add the headers to solve the problem. If it isn't owned by you, a proxy server comes into play.
 
 ### HOW TO USE
 
