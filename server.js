@@ -32,7 +32,7 @@ app.get('/*', function (req, res) {
         requestUrl = "http://" + requestUrl;
 
     utils.fetchData(requestUrl).then((data) => {
-        data = JSON.stringify(data)
+        //data = JSON.stringify(data)
         //console.log("DATA: " + data)
         res.header('Access-Control-Allow-Origin','*');
         res.statusCode = 200;

@@ -2,12 +2,11 @@ const fetch = require("node-fetch");
 
 module.exports.fetchData = async function fetchData(url) {
     const data = await fetch(url).catch(e => {
-        console.log("ERROR WHILE FETCHING API.")
+        //console.log("ERROR WHILE FETCHING API. " + e)
     });
     
-    //console.log("DATA: " + data)
     let response = await data.json();
-    console.log("RESPONSE:" + response)
+    //console.log("RESPONSE:" + response)
     return response
 }
 
