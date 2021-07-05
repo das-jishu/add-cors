@@ -9,12 +9,15 @@
  [![Generic badge](https://img.shields.io/badge/framework-node-yellow.svg)](https://www.typescriptlang.org/)
  
 **Description:** A Node proxy to add CORS headers to a request made to an API endpoint.
-<br-->
 
+#
+ 
 ![Image of error due to blockage by CORS policy](https://github.com/das-jishu/add-cors/blob/master/images/no-cors-error.PNG?raw=true)
 
 <br-->
 The image above shows a response blocked due to CORS policy not satisfied since correct headers were not present on the response. Frontend code won't have access to responses if responses don't have CORS headers embedded in it. If the backend server is owned by you, you can add the headers to solve the problem. If it isn't owned by you, a proxy server comes into play.
+ 
+#
 
 ### HOW TO USE
 
@@ -43,6 +46,8 @@ After executing the above commands, your own server would be running and availab
 You can make requests to endpoints simply by attaching the URL infront of it.
 
 Example: https://cors-everywhere.herokuapp.com/http://www.check-cors.com
+ 
+#
 
 ### EXTRAS
 
