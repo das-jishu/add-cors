@@ -1,6 +1,6 @@
 # add-cors
 
-![Add CORS cover image](https://github.com/das-jishu/add-cors/blob/master/images/add-cors-cover.PNG?raw=true)
+![Add CORS cover image](https://github.com/das-jishu/add-cors/blob/master/images/add-cors-cover.png?raw=true)
 
  [![Build Status](https://travis-ci.com/das-jishu/add-cors.svg?branch=master)](https://travis-ci.com/github/das-jishu/add-cors)
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT "MIT License")
