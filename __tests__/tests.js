@@ -20,14 +20,14 @@ test('Testing ValidateURL: example', () => {
     expect(utils.validateURL("example")).toBeFalsy();
 });
 
-test('the fetch fails with an error', () => {
+test('Testing failure of Fetch with invalid API', () => {
     expect.assertions(1);
     return utils.fetchData('https://www.google.com').catch(e => {
         expect(e.type).toBe("invalid-json")
     });
 });
 
-test('the data is peanut butter', async () => {
+test('Testing success of Fetch with valid API', async () => {
     const data = await utils.fetchData("https://api.artic.edu/api/v1/artworks/129884");
     expect(data).toStrictEqual(expect.anything());
 });
