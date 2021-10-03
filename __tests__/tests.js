@@ -31,7 +31,12 @@ test('Testing failure of Fetch with invalid API', () => {
     });
 });
 
-test('Testing success of Fetch with valid API', async () => {
+test('Testing success of Fetch with valid API - 1', async () => {
     const data = await utils.fetchData("https://api.artic.edu/api/v1/artworks/129884");
+    expect(data).toStrictEqual(expect.anything());
+});
+
+test('Testing success of Fetch with valid API - 2', async () => {
+    const data = await utils.fetchData("https://api.genderize.io/?name=peter");
     expect(data).toStrictEqual(expect.anything());
 });
