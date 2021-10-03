@@ -16,6 +16,10 @@ test('Testing ValidateURL: example.com', () => {
     expect(utils.validateURL("example.com")).toBeTruthy();
 });
 
+test('Testing ValidateURL: example.com/api/v1/', () => {
+    expect(utils.validateURL("example.com/api/v1/")).toBeTruthy();
+});
+
 test('Testing ValidateURL: example', () => {
     expect(utils.validateURL("example")).toBeFalsy();
 });
